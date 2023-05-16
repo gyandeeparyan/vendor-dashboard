@@ -29,7 +29,7 @@ export function Navbar() {
           <span>
             
           </span>
-          <span className='font-bold text-4xl '>Vendor Dashboard</span>
+          <span className='font-bold text-4xl italic'>Vendor Dashboard</span>
         </div>
         <div className='hidden lg:block'>
           <ul className='inline-flex space-x-8  '>
