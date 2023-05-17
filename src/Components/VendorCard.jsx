@@ -1,7 +1,11 @@
 import React from 'react'
 import { ArrowUpRight } from 'lucide-react'
+import { useGlobalContext } from '../Context/context';
+ function VendorCard({name ,accountNum,bankName}) {
+  const { edit,handleEdit,handleModal} = useGlobalContext();
 
-export function CardThree() {
+
+
   return (
     <div className="w-[300px] rounded-3xl border-4 border-black">
       
@@ -18,7 +22,7 @@ export function CardThree() {
   </legend>
 
    <p className="mt-3 font-bold text-xl text-gray-600 mb-5">
-          Lorem ipsum 
+          {name} 
     </p>
     <legend
     class="text-m font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -28,7 +32,7 @@ export function CardThree() {
   </legend>
 
         <p className="mt-3 font-bold text-xl text-gray-600 mb-5">
-          Lorem ipsum 
+          {accountNum} 
         </p><legend
     class="text-m font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
     for="name"
@@ -37,7 +41,7 @@ export function CardThree() {
   </legend>
 
         <p className="mt-3 font-bold text-xl text-gray-600 mb-5">
-          Lorem ipsum 
+          {bankName} 
         </p>
 
 </fieldset>
@@ -45,12 +49,14 @@ export function CardThree() {
         
         <button
           type="button"
+          onClick={handleEdit}
           className="mt-4 w-full rounded-full bg-black px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
         >
           EDIT
         </button>
         <button
           type="button"
+          onClick={handleModal}
           className="mt-4 w-full rounded-full bg-black px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
         >
           DELETE
@@ -59,3 +65,5 @@ export function CardThree() {
     </div>
   )
 }
+
+export  default VendorCard;

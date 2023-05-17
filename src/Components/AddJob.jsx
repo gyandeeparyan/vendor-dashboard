@@ -1,8 +1,35 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
+import { useState } from "react";
 import { useGlobalContext } from "../Context/context";
- function EditCard() {
-    const {handleUpdate,handleDelete} = useGlobalContext();
+
+
+function AddJob({}) {
+const {addVendor}=useGlobalContext()
+
+    const [name, setName] = useState('');
+    const [accountNum, setAccountNum] = useState('');
+    const [bankName, setBankName] = useState('');
+    const handleSubmit = (e) => {
+      e.preventDefault();
+    //   if (!name) {
+    //     alert('Please Provide Name Value');
+    //     return;
+    //   }
+      addVendor(name,accountNum,bankName);
+      setName('');
+      setAccountNum('');
+      setBankName('');
+    };
+
+
+
+
+
+
+
+
+
 
 
   return (
@@ -11,7 +38,8 @@ import { useGlobalContext } from "../Context/context";
         <h1 className='inline-flex items-center text-xl font-semibold mb-5'>
           Vendor Details <ArrowUpRight className='ml-2 h-4 w-4' />
         </h1>
-        <fieldset>
+      <form action=""  onSubmit={handleSubmit}>
+      <fieldset>
           <legend
             class='text-m font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
             for='name'
@@ -20,10 +48,13 @@ import { useGlobalContext } from "../Context/context";
           </legend>
 
           <input
-            className='flex mt-3 mb-3 h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50'
+            className='flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50'
             type='text'
             placeholder='Enter your name'
             id='name'
+            
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
           ></input>
           <legend
@@ -34,10 +65,11 @@ import { useGlobalContext } from "../Context/context";
           </legend>
 
           <input
-            className='flex mt-3 mb-3 h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50'
+            className='flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50'
             type='number'
             placeholder='Enter your name'
-            id='name'
+            value={accountNum}
+            onChange={(e) => setAccountNum(e.target.value)}
             required
           ></input>
           <legend
@@ -48,20 +80,22 @@ import { useGlobalContext } from "../Context/context";
           </legend>
 
           <input
-        className="flex mt-3 mb-3 h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+        className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
         type="text"
         placeholder="Enter your name"
-        id="name"
+        id="bankName"
+        value={bankName}
+        onChange={(e) => setBankName(e.target.value)}
         required
       ></input>
         </fieldset>
 
         <button
-        onClick={handleUpdate}
-          type='button'
+          type='submit'
+          
           className='mt-4 w-full rounded-full bg-black px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black'
         >
-          SAVE
+          ADD
         </button>
         <button
           type='button'
@@ -69,9 +103,12 @@ import { useGlobalContext } from "../Context/context";
         >
           DELETE
         </button>
+      </form>
+
+        
       </div>
     </div>
   );
 }
 
-export default EditCard
+export default AddJob
